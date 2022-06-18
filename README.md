@@ -1,5 +1,6 @@
-### Tinyml Digital Counter for Electric Metering System
+![alt text](./smart_meter_tinyML.svg)
 
+### Tinyml Digital Counter for Electric Metering System
  The repo contains the codebase for building and deployment of computer vision solution for digitalizing electric meters. 
 
 - Build a prototype with a basic digital display and if we succeed we can move to the next step
