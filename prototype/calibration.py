@@ -12,8 +12,8 @@ sensor.set_pixformat(sensor.RGB565)
 sensor.set_framesize(sensor.QVGA)   # Set frame size to QVGA (320x240)
 sensor.skip_frames(time=2000)     # Wait for settings take effect.
 clock = time.clock()                # Create a clock object to track the FPS.
-x1_v = 75
-y1_v = 107
+x1_v = 74
+y1_v = 73
 w = 123
 h = 40
 
