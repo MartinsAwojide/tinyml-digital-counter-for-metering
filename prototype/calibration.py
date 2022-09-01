@@ -15,7 +15,7 @@ clock = time.clock()                # Create a clock object to track the FPS.
 x1_v = 74
 y1_v = 73
 w = 123
-h = 40
+h = 44
 
 while(True):
     clock.tick()                    # Update the FPS clock.
