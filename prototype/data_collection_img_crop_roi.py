@@ -13,7 +13,7 @@ RED_LED_PIN = 1
 BLUE_LED_PIN = 3
 
 w = 123
-h = 40
+h = 44
 x1_v = 74
 y1_v = 73
 x2_v = 75
