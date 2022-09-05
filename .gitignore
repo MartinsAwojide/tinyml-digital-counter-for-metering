@@ -5,6 +5,13 @@ __pycache__/
 Meter_Digital_Scraping.zip
 Meter_Digital_Scraping/
 Meter Digital Scraping/
+notebook/data1/
+notebook/data2/
+notebook/data3/
+notebook/data4/
+notebook/data5/
+notebook/finished/
+
 # C extensions
 *.so
 
