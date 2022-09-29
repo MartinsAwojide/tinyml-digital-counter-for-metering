@@ -1,0 +1,4 @@
+SSID = ""
+KEY = ""
+user = ""
+password = ""

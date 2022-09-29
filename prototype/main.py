@@ -26,17 +26,11 @@ sensor.skip_frames(time=2000)          # Let the camera adjust.
 
 w = 123
 h = 44
-x1_v = 74
+x1_v = 32
 y1_v = 73
-x2_v = 75
-y2_v = 71
-x1_h = 75
-y1_h = 75
-x2_h = 75+120
-y2_h = 75
-image_counter = 0
 
 image_folder_name = "inference"+'_'
+image_counter = len([x for x in os.listdir(image_folder_name) if x[0] != "."])
 if not image_folder_name in os.listdir():
     os.mkdir(image_folder_name)
     print(f"directory {image_folder_name} created")
@@ -68,9 +62,29 @@ wlan.connect(SSID, KEY, security=wlan.WPA_PSK)
 # We should have a valid IP now via DHCP
 print("WiFi Connected ", wlan.ifconfig())
 
-client = MQTTClient("openmv", "io.adafruit.com", user=user,
-                    password=password, port=1883)
-client.connect()
+
+def connect_to_broker():
+    global client_id, mqtt_server, topic_sub
+    #client = MQTTClient(client_id, mqtt_server)
+    client = MQTTClient("openmv", "io.adafruit.com", user=user,
+                        password=password, port=1883)
+    # client.set_callback(sub_cb)
+    client.connect()
+    # client.subscribe(topic_sub)
+    print("Connected to a broker")
+    return client
+
+
+def restart_and_reconnect():
+    print('Failed to connect to MQTT broker. Reconnecting...')
+    time.sleep(10)
+    machine.reset()
+
+
+def callibrate():
+    img = sensor.snapshot()
+    img.draw_rectangle(x1_v, y1_v, w, h)
+    lcd.display(img)
 
 
 def grab_roi(img_full):
@@ -141,23 +155,39 @@ def inference(cropped_numbers):
     return text
 
 
+time_record_start_seconds = time.mktime(time.gmtime())
+calibration_time_seconds = 10  # pre-defined video length in seconds
+
+print("I'm about to calibrate...")
+while(time.mktime(time.gmtime()) - time_record_start_seconds < calibration_time_seconds):
+    print("Calibrating.....")
+    callibrate()
+    # break
+try:
+    client = connect_to_broker()
+except OSError as e:
+    restart_and_reconnect()
+
+
 while (True):
-    image_counter += 1
-    img_full = sensor.snapshot()
-    image_file_name = "Img"+'_' + \
-        str(image_counter)+'_'+str(time.mktime(time.gmtime()))
-    img_full.crop(roi=(x1_v, y1_v, w, h))
-    img_full.save(str(image_folder_name)+'/'+str(image_file_name), quality=100)
-    print(img_full)
-    cropped_numbers = grab_roi(img_full)
-    multiple_text = inference(cropped_numbers)
-    img_t = compress_image(img_full)
+    try:
+        image_counter += 1
+        img_full = sensor.snapshot()
+        image_file_name = "Img"+'_' + \
+            str(image_counter)+'_'+str(time.mktime(time.gmtime()))
+        img_full.crop(roi=(x1_v, y1_v, w, h))
+        img_full.save(str(image_folder_name)+'/' +
+                      str(image_file_name), quality=100)
+        print(img_full)
+        cropped_numbers = grab_roi(img_full)
+        text = inference(cropped_numbers)
+        img_t = compress_image(img_full)
 
-    # replace Adafruit IO user with your Adafruit IO user
-    #client.publish("igeorge/feeds/reading", i_t)
-    client.publish("igeorge/feeds/unit", str(multiple_text))
-    client.publish("igeorge/feeds/openmv", img_t)
-
-    files_path = [x for x in os.listdir(image_folder_name) if x[0] != "."]
-    print(f"number of image saved: {len(files_path)}")
-    time.sleep(10)  # lower values will exceed Adafruit IO requirements
+        # replace Adafruit IO user with your Adafruit IO user
+        #client.publish("igeorge/feeds/reading", i_t)
+        client.publish("igeorge/feeds/unit", str(text))
+        client.publish("igeorge/feeds/openmv", img_t)
+        print(f"number of image saved: {image_counter}")
+        time.sleep(60)  # lower values will exceed Adafruit IO requirements
+    except OSError as e:
+        restart_and_reconnect()
