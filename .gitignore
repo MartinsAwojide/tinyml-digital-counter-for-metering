@@ -11,6 +11,7 @@ notebook/data3/
 notebook/data4/
 notebook/data5/
 notebook/finished/
+.DS_Store
 
 # C extensions
 *.so
