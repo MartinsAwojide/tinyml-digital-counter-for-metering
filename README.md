@@ -31,12 +31,10 @@ The cropped images is uploaded the Edge Impulse and a computer vision model was 
 
 ## <center> Demo </center>
 
-<center>
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=Ymdig18wVlM
-" target="_blank"><img src="http://img.youtube.com/vi/Ymdig18wVlM/0.jpg" 
-alt="Demo Link" width="560" height="315" border="2"/></a>
-</center>
 
+[![Page Minipulator Chrome Extension](https://i.imgur.com/1RNxxw6.png)](https://www.youtube.com/watch?v=Ymdig18wVlM "Page Minipulator - Chrome Extension")
+
+[Imgur](https://i.imgur.com/1RNxxw6.png)
 
 ## <center> Future Works </center>
 - Build lighting system for obtaining reading at night
