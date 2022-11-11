@@ -41,7 +41,7 @@ if not image_folder_name in os.listdir():
 
 image_counter = 0
 time_record_start_seconds = time.mktime(time.gmtime())
-record_length_seconds = 10800   # pre-defined video length in seconds
+record_length_seconds = float('inf')   # infinite time length for image capture
 
 
 def snapshot_function(image_counter):

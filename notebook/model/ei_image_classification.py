@@ -28,7 +28,11 @@ while(True):
     clock.tick()
 
     img = sensor.snapshot()
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 758eea9cdb485fdae53aa43cf8a107a7f2829832
     # default settings just do one detection... change them to search the image...
     for obj in net.classify(img, min_scale=1.0, scale_mul=0.8, x_overlap=0.5, y_overlap=0.5):
         print("**********\nPredictions at [x=%d,y=%d,w=%d,h=%d]" % obj.rect())
