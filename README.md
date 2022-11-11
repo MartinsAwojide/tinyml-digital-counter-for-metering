@@ -30,10 +30,15 @@ The cropped images is uploaded the Edge Impulse and a computer vision model was 
 ![alt workflow](assets/tinyml_deployment.png)
 
 ## <center> Demo </center>
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Ymdig18wVlM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-### <center> Future Works </center>
+
+<center>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Ymdig18wVlM
+" target="_blank"><img src="http://img.youtube.com/vi/Ymdig18wVlM/0.jpg" 
+alt="Demo Link" width="560" height="315" border="2"/></a>
+</center>
+
+
+## <center> Future Works </center>
 - Build lighting system for obtaining reading at night
 - Deep sleep and energy saving mode
 - Alerting system for notification
