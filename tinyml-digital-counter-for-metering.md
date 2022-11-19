@@ -20,7 +20,7 @@ Luckily, a form of display is everybody’s fav (Boomers and Gen X’ers alike; 
 
 Most systems provide the output of process parameters in form of a display–analog or digital. [Peter Warden’s blog](https://petewarden.com/2021/02/28/how-screen-scraping-and-tinyml-can-turn-any-dial-into-an-api/) on “How screen scraping and TinyML can turn any dial into an API” provides a brilliant treatise on handling this problem. This work attempts to do for digital displays what [Brandon Satrom](https://www.hackster.io/brandonsatrom/monitor-the-analog-world-with-tinyml-fd59c4) implemented for analog displays albeit with a different setup, hardware and software choices.
 
-![](assets/2_analog_v_digital.jpg)
+![](assets/2_analog_v_digital.jpg){:.centered}
 <p align = "center"><i>Screen Scraping: Analog vs Digital</i></p>
 
 ### Hardware Requirements
