@@ -5,10 +5,10 @@ Digital Screen Scraping on edge devices
 # TinyML Digital Counter for Electric Metering System
 
 Created By:
-[George Igwegbe](https://www.hackster.io/gigwegbe), [Martins Awojide](https://www.hackster.io/martinsawojide)
+[George Igwegbe](https://www.linkedin.com/in/george-igwegbe/), [Martins Awojide](https://www.linkedin.com/in/martinsawojide/)
 
 Public Project Link:
-[GitHub](https://github.com/gigwegbe/tinyml-digital-counter-for-metering)
+[GitHub](https://github.com/gigwegbe/tinyml-digital-counter-for-metering) | [Edge Impulse](https://studio.edgeimpulse.com/public/136141/latest/learning/keras/17)
 
 ![Header](assets/1_header.jpg)
 
