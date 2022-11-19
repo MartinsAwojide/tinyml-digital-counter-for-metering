@@ -10,9 +10,7 @@ Created By:
 Public Project Link:
 [GitHub](https://github.com/gigwegbe/tinyml-digital-counter-for-metering)
 
-![](.gitbook/tinyml-digital-counter-for-metering/assets/1_header.jpg)
-
-![](https://github.com/MartinsAwojide/tinyml-digital-counter-for-metering/blob/e6ad5f33ef25e652e13305e1b93c39b0ed451ad7/assets/1_header.jpg)
+![Header](https://github.com/MartinsAwojide/tinyml-digital-counter-for-metering/blob/e6ad5f33ef25e652e13305e1b93c39b0ed451ad7/assets/1_header.jpg)
 
 <p align = "center"><img src = "https://github.com/MartinsAwojide/tinyml-digital-counter-for-metering/blob/main/article%20assets/1_header.jpg?raw=true"></p>
 <p align = "center"> </p>
