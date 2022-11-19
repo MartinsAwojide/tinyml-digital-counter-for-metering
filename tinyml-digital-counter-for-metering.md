@@ -10,7 +10,7 @@ Created By:
 Public Project Link:
 [GitHub](https://github.com/gigwegbe/tinyml-digital-counter-for-metering)
 
-![Header](assets/1_header.jpg)
+![Header](assets/1_header.jpg#center)
 
 ## Story
 
@@ -20,7 +20,7 @@ Luckily, a form of display is everybody’s fav (Boomers and Gen X’ers alike; 
 
 Most systems provide the output of process parameters in form of a display–analog or digital. [Peter Warden’s blog](https://petewarden.com/2021/02/28/how-screen-scraping-and-tinyml-can-turn-any-dial-into-an-api/) on “How screen scraping and TinyML can turn any dial into an API” provides a brilliant treatise on handling this problem. This work attempts to do for digital displays what [Brandon Satrom](https://www.hackster.io/brandonsatrom/monitor-the-analog-world-with-tinyml-fd59c4) implemented for analog displays albeit with a different setup, hardware and software choices.
 
-![](assets/2_analog_v_digital.jpg)
+![](assets/2_analog_v_digital.jpg#center)
 <p align = "center"><i>Screen Scraping: Analog vs Digital</i></p>
 
 ### Hardware Requirements
@@ -45,12 +45,12 @@ As we progress, we would be discussing how to:
 - Use Edge Impulse Studio to build an image classification model that detects all 10-digit types
 - Setup a device for live capture and image recognition
 
-![](assets/3_workflow.jpg)
+![](assets/3_workflow.jpg#center)
 <p align = "center"><i>Project Workflow</i></p>
 
 The first course of action for this endeavour was to determine the best edge device for the project considering the metering device was at a remote location without an accessible power source. The OpenMV H7+ was drawn from a lot including the Arduino BLE and Raspberry Pi because of its small form factor, relatively low power consumption, quality of camera attachable to the board, compute power and Tensorflow support. It also helps that the OpenMV community provides ample guides for development and troubleshooting.
 
-![](assets/4_top_3.jpg)
+![](assets/4_top_3.jpg#center)
 <p align = "center"><i>Top 3 devices for the project</i></p>
 
 A suitable rig was built to hold the OpenMV board and its power source. I felt it was a prerequisite for the rig to allow for physical adjustment during the initial data capture, guard against tampering, wind interference or parallax–*error as much as possible.*
@@ -59,25 +59,25 @@ Luckily, the OpenMV board has a dedicated IDE with sample codes written in pytho
 
 Recall that these steps were just necessary to understand the workings of the projects and validate the initial plan for the set goal–*remote data acquisition.* At this point, the images captured were full-blown 15Kb JPEGs of the whole metering setup but we really needed just a shot of the screen of the meter–*the intended Region of Interest (ROI).* My first attempt to snip off the ROI was made using the thresholding feature available on OpenMV IDE but this failed due to difficulty in segregating the screen segment of the image from the chassis and keypad of the meter. My Plan B was a rule-based approach that entailed embedding the coordinates of the screen for a suitable bounding box. The cropped image of the screen was further processed by relative coordinates to segment the digits displayed on the screen–and of course, the decimal point.
 
-![](assets/5_screens.jpg)
+![](assets/5_screens.jpg#center)
 <p align = "center"><i>Screen Segmentation for Digit Cropping</i></p>
 
 Having sorted out the process of image capture and cropping for digit recognition, I began the data collection stage of the project. The duration of the collection was based on the constraints namely the battery power of the cells and the board’s internal memory (32Mb). For some reason, my particular board was not accepting an SDCard, and all the scrolling through MicroPython and OpenMV forums did not help! I intentionally placed a limit on data collection to control the quality of images gotten–*which were taken during daytime*–and the mAh value of the power source in use.
 
 The whole data collection process generated 3260 digit data for training. The choice was made to manually label the data set for improved accuracy. I did this by selecting and moving individual images to folders labelled 0 to 9. A verification step was included in the later stage to handle errors in labelling–*FYI, I had 3 labelling errors in all.*
 
-![](assets/6_explorer.jpg)
+![](assets/6_explorer.jpg#center)
 <p align = "center"><i>Unlabelled Data in File Explorer</i></p>
 
-![](assets/7_distribution.jpg)
+![](assets/7_distribution.jpg#center)
 <p align = "center"><i>Distribution of Classes of Training Data</i></p>
 
 At this juncture, it was time to have fun with Edge Impulse Studio. Considering the OpenMV board only supports quantized INT8 models, the training parameters were set accordingly. Next, experimentation on model performance was done with MobileNet with the transfer learning feature. This returned a model with poor F1 score and a miserly 20.2% accuracy. On further research, I discovered that the limitation came from the use of MobileNet as basis of training. MobileNet input size is expected to be 96 x 96 or 160 x 160 for optimal performance. Our input was peculiar (15 x 20) hence I opted for pure vanilla training with a model having three dense layers and this time I had improved results. I retried the training with more epochs for better accuracy and hit 99.8%.
 
-![](assets/8_mobilenet.jpg)
+![](assets/8_mobilenet.jpg#center)
 <p align = "center"><i>Initial Attempt with MobileNet</i></p>
 
-![](assets/9_dense.jpg)
+![](assets/9_dense.jpg#center)
 <p align = "center"><i>Subsequent Attempt with 3 Dense Layers</i></p>
 
 The model was generated by Edge Impulse Studio in a tflite file format and it was transferred to the OpenMV board on the initial setup rig. Since the metering device was placed at a detached location from the apartment, a WiFi range extender was set up to enable communication between the OpenMV’s WiFi Shield and the platform of choice. Essentially, the OpenMV device which houses the model does the computing and sends the live data via MQTT to a dashboard *(in this case Adafruit IO)* allowing for real-time updates of the credit point pending on the meter. Mission accomplished!
