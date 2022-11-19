@@ -10,7 +10,9 @@ Created By:
 Public Project Link:
 [GitHub](https://github.com/gigwegbe/tinyml-digital-counter-for-metering)
 
+<p align = "center">
 ![Header](assets/1_header.jpg)
+<p align = "center"> </p>
 
 <p align = "center"><img src = "https://github.com/MartinsAwojide/tinyml-digital-counter-for-metering/blob/main/article%20assets/1_header.jpg?raw=true"></p>
 <p align = "center"> </p>
