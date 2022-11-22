@@ -20,7 +20,7 @@ Run the data collection script [`data_collection_img.py`](https://github.com/gig
 The captured data is further processed to obtain each digit in each sample image using the following [notebook](https://github.com/gigwegbe/tinyml-digital-counter-for-metering/blob/main/notebook/draw_digit_with_perpective_transform_crop_save_image.ipynb).
 ![alt workflow](assets/tinyml_img_processing.png)
 # <center> Training </center>
-The cropped images is uploaded the Edge Impulse and a computer vision model was built to recongize digits. 
+The cropped images are uploaded the Edge Impulse and a computer vision model was built to recongize digits. 
 ![alt workflow](assets/model_training_details_before.png)
 
 # <center> Deployment </center>
