@@ -23,12 +23,17 @@ The captured data is further processed to obtain each digit in each sample image
 The cropped images is uploaded the Edge Impulse and a computer vision model was built to recongize digits. 
 ![alt workflow](assets/model_training_details_before.png)
 
-# <center> Testing </center>
-
-
 # <center> Deployment </center>
 ![alt workflow](assets/tinyml_deployment.png)
-
+To use the inference script, provide  the following details in the [`secret.py`](https://github.com/gigwegbe/tinyml-digital-counter-for-metering/blob/main/prototype/secret.py): 
+```
+user = "" # MQTT username 
+password = "" # MQTT password
+SSID = ""  # Network SSID
+KEY = ""  # Network key
+server = "" # MQTT server
+```
+Run the deployment script [`main.py`](https://github.com/gigwegbe/tinyml-digital-counter-for-metering/blob/main/prototype/main.py). To perform inference. 
 ## <center> Demo </center>
 
 
@@ -39,13 +44,3 @@ The cropped images is uploaded the Edge Impulse and a computer vision model was 
 - Build lighting system for obtaining reading at night
 - Deep sleep and energy saving mode
 - Alerting system for notification
-
-#
-# Others 
-- Build a prototype with a basic digital display and if we succeed we can move to the next step
-- Collect data from real electric meter
-- Process the image and build simple CV model
-- Build simple baseline model 
-- Improve the baseline model 
-- Inteface with LCD module
-- Inteface with wifi module
