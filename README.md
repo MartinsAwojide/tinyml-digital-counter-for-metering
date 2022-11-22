@@ -35,10 +35,11 @@ server = "" # MQTT server
 ```
 Run the deployment script [`main.py`](https://github.com/gigwegbe/tinyml-digital-counter-for-metering/blob/main/prototype/main.py). To perform inference. 
 ## <center> Demo </center>
+![](assets/10_gif.gif)
+<p><i>Screen Scraping in Action</i></p>
 
-
-[![Page Minipulator Chrome Extension](https://i.imgur.com/1RNxxw6.png)](https://www.youtube.com/watch?v=Ymdig18wVlM "Page Minipulator - Chrome Extension")
-
+[![Demo video](https://i.imgur.com/1RNxxw6.png)](https://www.youtube.com/watch?v=Ymdig18wVlM "Demo video")
+<p><i>Demo video</i></p>
 
 # <center> Future Works </center>
 - Build lighting system for obtaining reading at night
